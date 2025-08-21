@@ -1,4 +1,4 @@
-import StreamZip from 'node-stream-zip';
+import * as yauzl from 'yauzl';
 export class CacheLogParser {
     static CACHE_PATTERNS = {
         cacheHit: /Cache restored from key: (.+)/i,
@@ -16,14 +16,50 @@ export class CacheLogParser {
     async parseRunLogs(logData, runId, workflowName, runDate, runUrl) {
         const results = [];
         try {
-            const zip = new StreamZip.async({ buffer: logData });
-            const entries = await zip.entries();
-            for (const [filename, entry] of Object.entries(entries)) {
-                if (entry.isFile && filename.endsWith('.txt')) {
-                    const logContent = await zip.entryData(filename);
+            const zipFile = await new Promise((resolve, reject) => {
+                yauzl.fromBuffer(logData, { lazyEntries: true }, (err, zip) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    else if (zip) {
+                        resolve(zip);
+                    }
+                    else {
+                        reject(new Error('Failed to parse zip file'));
+                    }
+                });
+            });
+            const entries = await new Promise((resolve, reject) => {
+                const entryList = [];
+                zipFile.readEntry();
+                zipFile.on('entry', (entry) => {
+                    entryList.push(entry);
+                    zipFile.readEntry();
+                });
+                zipFile.on('end', () => resolve(entryList));
+                zipFile.on('error', reject);
+            });
+            for (const entry of entries) {
+                if (!entry.fileName.endsWith('/') && entry.fileName.endsWith('.txt')) {
+                    const logContent = await new Promise((resolve, reject) => {
+                        zipFile.openReadStream(entry, (err, stream) => {
+                            if (err) {
+                                reject(err);
+                                return;
+                            }
+                            if (!stream) {
+                                reject(new Error('No stream available'));
+                                return;
+                            }
+                            const chunks = [];
+                            stream.on('data', (chunk) => chunks.push(chunk));
+                            stream.on('end', () => resolve(Buffer.concat(chunks)));
+                            stream.on('error', reject);
+                        });
+                    });
                     const logText = logContent.toString('utf8');
-                    const jobNameMatch = filename.match(/^\d+_(.+)\.txt$/);
-                    const jobName = jobNameMatch ? jobNameMatch[1] : filename;
+                    const jobNameMatch = entry.fileName.match(/^\d+_(.+)\.txt$/);
+                    const jobName = jobNameMatch ? jobNameMatch[1] : entry.fileName;
                     const cacheOperations = this.parseLogContent(logText, jobName);
                     for (const op of cacheOperations) {
                         results.push({
@@ -42,7 +78,7 @@ export class CacheLogParser {
                     }
                 }
             }
-            await zip.close();
+            zipFile.close();
         }
         catch (error) {
             console.warn(`Warning: Failed to parse logs for run ${runId}: ${error}`);

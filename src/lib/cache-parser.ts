@@ -1,4 +1,4 @@
-import StreamZip from 'node-stream-zip';
+import * as yauzl from 'yauzl';
 import { CacheLogEntry, CacheHitResult } from '../types/index.js';
 
 export class CacheLogParser {
@@ -35,19 +35,60 @@ export class CacheLogParser {
     const results: CacheHitResult[] = [];
 
     try {
-      // Create a temporary buffer to work with the zip
-      const zip = new StreamZip.async({ buffer: logData } as any);
-      const entries = await zip.entries();
+      // Parse the zip buffer using yauzl
+      const zipFile = await new Promise<yauzl.ZipFile>((resolve, reject) => {
+        yauzl.fromBuffer(logData, { lazyEntries: true }, (err, zip) => {
+          if (err) {
+            reject(err);
+          } else if (zip) {
+            resolve(zip);
+          } else {
+            reject(new Error('Failed to parse zip file'));
+          }
+        });
+      });
+
+      // Process each entry in the zip
+      const entries = await new Promise<yauzl.Entry[]>((resolve, reject) => {
+        const entryList: yauzl.Entry[] = [];
+        
+        zipFile.readEntry();
+        zipFile.on('entry', (entry: yauzl.Entry) => {
+          entryList.push(entry);
+          zipFile.readEntry();
+        });
+        
+        zipFile.on('end', () => resolve(entryList));
+        zipFile.on('error', reject);
+      });
 
       // Process each log file in the zip
-      for (const [filename, entry] of Object.entries(entries)) {
-        if ((entry as any).isFile && filename.endsWith('.txt')) {
-          const logContent = await zip.entryData(filename);
+      for (const entry of entries) {
+        if (!entry.fileName.endsWith('/') && entry.fileName.endsWith('.txt')) {
+          const logContent = await new Promise<Buffer>((resolve, reject) => {
+            zipFile.openReadStream(entry, (err, stream) => {
+              if (err) {
+                reject(err);
+                return;
+              }
+              
+              if (!stream) {
+                reject(new Error('No stream available'));
+                return;
+              }
+              
+              const chunks: Buffer[] = [];
+              stream.on('data', (chunk: Buffer) => chunks.push(chunk));
+              stream.on('end', () => resolve(Buffer.concat(chunks)));
+              stream.on('error', reject);
+            });
+          });
+          
           const logText = logContent.toString('utf8');
           
           // Extract job name from filename (format: "1_JobName.txt")
-          const jobNameMatch = filename.match(/^\d+_(.+)\.txt$/);
-          const jobName = jobNameMatch ? jobNameMatch[1] : filename;
+          const jobNameMatch = entry.fileName.match(/^\d+_(.+)\.txt$/);
+          const jobName = jobNameMatch ? jobNameMatch[1] : entry.fileName;
 
           const cacheOperations = this.parseLogContent(logText, jobName);
           
@@ -70,7 +111,7 @@ export class CacheLogParser {
         }
       }
 
-      await zip.close();
+      zipFile.close();
     } catch (error) {
       console.warn(`Warning: Failed to parse logs for run ${runId}: ${error}`);
     }
