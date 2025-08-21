@@ -87,6 +87,20 @@ async function main() {
                 return value;
             }
         })
+            .option('max-repos', {
+            type: 'number',
+            description: 'Maximum number of repositories to analyze (for organization-wide analysis)',
+            default: 50,
+            coerce: (value) => {
+                if (value < 1) {
+                    throw new Error('max-repos must be at least 1');
+                }
+                if (value > 200) {
+                    throw new Error('max-repos cannot exceed 200 to respect API rate limits');
+                }
+                return value;
+            }
+        })
             .option('successful-only', {
             type: 'boolean',
             description: 'Include only successful workflow runs',
@@ -129,6 +143,7 @@ async function main() {
             since: argv.since,
             until: argv.until,
             maxRunsPerWorkflow: argv['max-runs-per-workflow'],
+            maxRepos: argv['max-repos'],
             format: argv.format,
             concurrency: argv.concurrency,
             successfulOnly: argv['successful-only'],
@@ -136,21 +151,32 @@ async function main() {
             output: argv.output,
             verbose: argv.verbose
         };
-        if (!options.owner || !options.repo) {
+        if (!options.owner && !options.repo) {
             try {
                 const currentRepo = await getCurrentRepository();
-                options.owner = options.owner || currentRepo.owner;
-                options.repo = options.repo || currentRepo.repo;
+                options.owner = currentRepo.owner;
+                options.repo = currentRepo.repo;
             }
             catch {
                 console.error(chalk.red('❌ Error: Could not determine repository from current directory.'));
-                console.error(chalk.yellow('💡 Please specify --owner and --repo options, or run from within a git repository.'));
+                console.error(chalk.yellow('💡 Please specify --owner and optionally --repo options, or run from within a git repository.'));
                 process.exit(1);
             }
         }
-        if (!options.owner || !options.repo) {
-            console.error(chalk.red('❌ Error: Repository owner and name are required.'));
-            console.error(chalk.yellow('💡 Use --owner and --repo options or run from within a git repository.'));
+        else if (!options.owner && options.repo) {
+            try {
+                const currentRepo = await getCurrentRepository();
+                options.owner = currentRepo.owner;
+            }
+            catch {
+                console.error(chalk.red('❌ Error: Could not determine repository owner from current directory.'));
+                console.error(chalk.yellow('💡 Please specify --owner option or run from within a git repository.'));
+                process.exit(1);
+            }
+        }
+        if (!options.owner) {
+            console.error(chalk.red('❌ Error: Repository owner is required.'));
+            console.error(chalk.yellow('💡 Use --owner option or run from within a git repository.'));
             process.exit(1);
         }
         if ((options.format === 'csv' || options.format === 'json') && !options.output) {
@@ -159,7 +185,13 @@ async function main() {
             process.exit(1);
         }
         if (options.verbose) {
-            console.log(chalk.blue(`🔍 Analyzing cache hit rates for ${options.owner}/${options.repo}`));
+            if (options.repo) {
+                console.log(chalk.blue(`🔍 Analyzing cache hit rates for ${options.owner}/${options.repo}`));
+            }
+            else {
+                console.log(chalk.blue(`🔍 Analyzing cache hit rates for organization: ${options.owner}`));
+                console.log(chalk.gray(`📊 Max repositories: ${options.maxRepos}`));
+            }
             console.log(chalk.gray(`📊 Format: ${options.format}`));
             console.log(chalk.gray(`🔄 Concurrency: ${options.concurrency}`));
             console.log(chalk.gray(`📅 Max runs per workflow: ${options.maxRunsPerWorkflow}`));

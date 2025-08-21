@@ -23,6 +23,43 @@ export interface CacheHitResult {
   runUrl: string;
 }
 
+export interface RepositoryInfo {
+  /** Repository owner */
+  owner: string;
+  /** Repository name */
+  repo: string;
+  /** Repository full name (owner/repo) */
+  fullName: string;
+  /** Repository description */
+  description?: string;
+  /** Repository URL */
+  url: string;
+  /** Whether repository is private */
+  private: boolean;
+  /** Repository language */
+  language?: string;
+}
+
+export interface OrganizationCacheStats {
+  /** Organization name */
+  organization: string;
+  /** Total repositories analyzed */
+  totalRepositories: number;
+  /** Repositories with cache usage */
+  repositoriesWithCache: number;
+  /** Overall statistics across all repositories */
+  overallStats: RepositoryCacheStats;
+  /** Per-repository statistics */
+  repositories: RepositoryCacheStats[];
+  /** Analysis metadata */
+  metadata: {
+    analyzedAt: Date;
+    totalWorkflows: number;
+    totalRuns: number;
+    rateLimitInfo?: ApiRateLimit;
+  };
+}
+
 export interface WorkflowCacheStats {
   /** Workflow name */
   workflowName: string;
@@ -77,14 +114,18 @@ export interface RepositoryCacheStats {
 export interface CliOptions {
   /** Repository owner (defaults to current repo) */
   owner?: string;
-  /** Repository name (defaults to current repo) */
+  /** Repository name (defaults to current repo) - if not provided, analyze all repos in organization */
   repo?: string;
+  /** Analyze all repositories in the organization (when repo is not specified) */
+  allRepos?: boolean;
   /** Start date for analysis (ISO string) */
   since?: string;
   /** End date for analysis (ISO string) */
   until?: string;
   /** Maximum number of runs to analyze per workflow */
   maxRunsPerWorkflow?: number;
+  /** Maximum number of repositories to analyze (for organization-wide analysis) */
+  maxRepos?: number;
   /** Output format */
   format?: 'table' | 'csv' | 'json';
   /** Number of concurrent requests */
@@ -101,14 +142,14 @@ export interface CliOptions {
 
 export interface WorkflowRun {
   id: number;
-  name: string;
+  name?: string | null;
   status: string | null;
   conclusion: string | null;
   created_at: string;
   updated_at: string;
   html_url: string;
   workflow_id: number;
-  head_branch: string;
+  head_branch: string | null;
   head_sha: string;
 }
 

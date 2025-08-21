@@ -11,6 +11,28 @@ export interface CacheHitResult {
     runDate: Date;
     runUrl: string;
 }
+export interface RepositoryInfo {
+    owner: string;
+    repo: string;
+    fullName: string;
+    description?: string;
+    url: string;
+    private: boolean;
+    language?: string;
+}
+export interface OrganizationCacheStats {
+    organization: string;
+    totalRepositories: number;
+    repositoriesWithCache: number;
+    overallStats: RepositoryCacheStats;
+    repositories: RepositoryCacheStats[];
+    metadata: {
+        analyzedAt: Date;
+        totalWorkflows: number;
+        totalRuns: number;
+        rateLimitInfo?: ApiRateLimit;
+    };
+}
 export interface WorkflowCacheStats {
     workflowName: string;
     totalCacheOps: number;
@@ -42,9 +64,11 @@ export interface RepositoryCacheStats {
 export interface CliOptions {
     owner?: string;
     repo?: string;
+    allRepos?: boolean;
     since?: string;
     until?: string;
     maxRunsPerWorkflow?: number;
+    maxRepos?: number;
     format?: 'table' | 'csv' | 'json';
     concurrency?: number;
     successfulOnly?: boolean;
@@ -54,14 +78,14 @@ export interface CliOptions {
 }
 export interface WorkflowRun {
     id: number;
-    name: string;
+    name?: string | null;
     status: string | null;
     conclusion: string | null;
     created_at: string;
     updated_at: string;
     html_url: string;
     workflow_id: number;
-    head_branch: string;
+    head_branch: string | null;
     head_sha: string;
 }
 export interface Workflow {

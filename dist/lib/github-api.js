@@ -1,15 +1,18 @@
 import { Octokit } from '@octokit/rest';
 import { execSync } from 'child_process';
+import pLimit from 'p-limit';
 export class GitHubApiClient {
     octokit;
     owner;
     repo;
-    constructor(owner, repo) {
+    limit;
+    constructor(owner, repo, concurrency = 3) {
         this.owner = owner;
         this.repo = repo;
+        this.limit = pLimit(concurrency);
         this.octokit = new Octokit({
             auth: this.getAuthToken(),
-            userAgent: 'gha-cache-hit-rate/0.1.0',
+            userAgent: 'gh-actions-cache-hit-rate/0.1.0',
             request: {
                 timeout: 30000,
                 retries: 3,
@@ -51,79 +54,60 @@ export class GitHubApiClient {
         }
     }
     async getWorkflows() {
+        if (!this.repo) {
+            throw new Error('Repository must be specified to get workflows');
+        }
         try {
-            const workflows = [];
-            let page = 1;
-            const perPage = 100;
-            while (true) {
-                const response = await this.octokit.rest.actions.listRepoWorkflows({
-                    owner: this.owner,
-                    repo: this.repo,
-                    per_page: perPage,
-                    page,
-                });
-                const pageWorkflows = response.data.workflows.map(workflow => ({
-                    id: workflow.id,
-                    name: workflow.name,
-                    path: workflow.path,
-                    state: workflow.state,
-                    created_at: workflow.created_at,
-                    updated_at: workflow.updated_at,
-                    html_url: workflow.html_url,
-                }));
-                workflows.push(...pageWorkflows);
-                if (pageWorkflows.length < perPage) {
-                    break;
-                }
-                page++;
-            }
-            return workflows;
+            const response = await this.octokit.actions.listRepoWorkflows({
+                owner: this.owner,
+                repo: this.repo,
+            });
+            return response.data.workflows.map(workflow => ({
+                id: workflow.id,
+                name: workflow.name,
+                path: workflow.path,
+                state: workflow.state,
+                created_at: workflow.created_at,
+                updated_at: workflow.updated_at,
+                html_url: workflow.html_url,
+            }));
         }
         catch (error) {
-            throw this.handleApiError(error, 'Failed to fetch workflows');
+            throw this.handleApiError(error, `fetching workflows for ${this.owner}/${this.repo}`);
         }
     }
-    async getWorkflowRuns(workflowId, options = {}) {
+    async getWorkflowRuns(workflowId, maxRuns = 100, successfulOnly = true) {
+        if (!this.repo) {
+            throw new Error('Repository must be specified to get workflow runs');
+        }
         try {
             const runs = [];
             let page = 1;
-            const perPage = 100;
-            const maxRuns = options.maxRuns || 1000;
             while (runs.length < maxRuns) {
-                const response = await this.octokit.rest.actions.listWorkflowRuns({
+                const response = await this.octokit.actions.listWorkflowRuns({
                     owner: this.owner,
                     repo: this.repo,
                     workflow_id: workflowId,
-                    status: options.status,
-                    created: options.created,
-                    per_page: Math.min(perPage, maxRuns - runs.length),
+                    status: successfulOnly ? 'success' : undefined,
+                    per_page: Math.min(100, maxRuns - runs.length),
                     page,
                 });
-                const pageRuns = response.data.workflow_runs.map(run => ({
-                    id: run.id,
-                    name: run.name || 'Unnamed run',
-                    status: run.status,
-                    conclusion: run.conclusion,
-                    created_at: run.created_at,
-                    updated_at: run.updated_at,
-                    html_url: run.html_url,
-                    workflow_id: run.workflow_id,
-                    head_branch: run.head_branch || 'unknown',
-                    head_sha: run.head_sha,
-                }));
-                runs.push(...pageRuns);
-                if (pageRuns.length < Math.min(perPage, maxRuns - runs.length + pageRuns.length)) {
+                if (response.data.workflow_runs.length === 0) {
                     break;
                 }
+                runs.push(...response.data.workflow_runs);
                 page++;
             }
             return runs.slice(0, maxRuns);
         }
         catch (error) {
-            throw this.handleApiError(error, `Failed to fetch runs for workflow ${workflowId}`);
+            throw this.handleApiError(error, `fetching workflow runs for workflow ${workflowId}`);
         }
     }
     async downloadRunLogs(runId) {
+        if (!this.repo) {
+            throw new Error('Repository must be specified to download run logs');
+        }
         try {
             const response = await this.octokit.rest.actions.downloadWorkflowRunLogs({
                 owner: this.owner,
@@ -137,6 +121,9 @@ export class GitHubApiClient {
         }
     }
     async getRunJobs(runId) {
+        if (!this.repo) {
+            throw new Error('Repository must be specified to get run jobs');
+        }
         try {
             const response = await this.octokit.rest.actions.listJobsForWorkflowRun({
                 owner: this.owner,
@@ -151,6 +138,9 @@ export class GitHubApiClient {
         }
     }
     async validateRepository() {
+        if (!this.repo) {
+            throw new Error('Repository must be specified to validate repository');
+        }
         try {
             await this.octokit.rest.repos.get({
                 owner: this.owner,
@@ -178,6 +168,53 @@ export class GitHubApiClient {
                 await this.sleep(waitTime);
             }
         }
+    }
+    async getRepositories(maxRepos = 100) {
+        try {
+            const repositories = [];
+            let page = 1;
+            while (repositories.length < maxRepos) {
+                console.log(`📂 Fetching repositories page ${page}...`);
+                const response = await this.limit(() => this.octokit.repos.listForOrg({
+                    org: this.owner,
+                    type: 'all',
+                    sort: 'updated',
+                    direction: 'desc',
+                    per_page: Math.min(100, maxRepos - repositories.length),
+                    page,
+                }));
+                if (response.data.length === 0) {
+                    break;
+                }
+                for (const repo of response.data) {
+                    if (repositories.length >= maxRepos) {
+                        break;
+                    }
+                    repositories.push({
+                        owner: repo.owner.login,
+                        repo: repo.name,
+                        fullName: repo.full_name,
+                        description: repo.description || undefined,
+                        url: repo.html_url,
+                        private: repo.private,
+                        language: repo.language || undefined,
+                    });
+                }
+                page++;
+                await this.sleep(200);
+            }
+            console.log(`✅ Found ${repositories.length} repositories`);
+            return repositories;
+        }
+        catch (error) {
+            throw this.handleApiError(error, 'fetching organization repositories');
+        }
+    }
+    hasRepository() {
+        return this.repo !== undefined;
+    }
+    forRepository(repo) {
+        return new GitHubApiClient(this.owner, repo);
     }
     handleApiError(error, context) {
         const apiError = error;
