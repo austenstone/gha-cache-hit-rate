@@ -5,15 +5,15 @@ import chalk from 'chalk';
 import { analyzeRepository } from './lib/analyzer.js';
 import { getCurrentRepository } from './utils/git.js';
 const packageInfo = {
-    name: 'gha-cache-hit-rate',
+    name: 'gh-actions-cache-hit-rate',
     version: '0.1.0',
-    description: 'Analyze cache hit rates across GitHub Actions workflows'
+    description: 'GitHub CLI extension to analyze cache hit rates across GitHub Actions workflows'
 };
 async function main() {
     let argv;
     try {
         argv = await yargs(hideBin(process.argv))
-            .scriptName('gh cache-hit-rate')
+            .scriptName('gh actions-cache-hit-rate')
             .usage('$0 [options]')
             .version(packageInfo.version)
             .option('owner', {

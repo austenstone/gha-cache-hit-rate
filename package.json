@@ -1,12 +1,12 @@
 {
-  "name": "gha-cache-hit-rate",
+  "name": "gh-actions-cache-hit-rate",
   "version": "0.1.0",
   "description": "GitHub CLI extension to analyze cache hit rates across GitHub Actions workflows",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "gha-cache-hit-rate": "./dist/index.js"
+    "gh-actions-cache-hit-rate": "./dist/index.js"
   },
   "scripts": {
     "build": "tsc",
@@ -20,6 +20,8 @@
   },
   "keywords": [
     "github",
+    "github-cli",
+    "gh-extension",
     "actions",
     "cache",
     "cli",
@@ -31,7 +33,7 @@
   "readme": "README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/austenstone/gha-cache-hit-rate.git"
+    "url": "https://github.com/austenstone/gh-actions-cache-hit-rate.git"
   },
   "license": "MIT",
   "devDependencies": {

@@ -1,0 +1,1090 @@
+{
+  "metadata": {
+    "generatedAt": "2025-08-21T15:44:25.093Z",
+    "tool": "gha-cache-hit-rate",
+    "version": "0.1.0",
+    "repository": {
+      "owner": "facebook",
+      "repo": "react",
+      "fullName": "facebook/react"
+    },
+    "analysis": {
+      "dateRange": {
+        "from": "2025-07-22T15:44:25.093Z",
+        "to": "2025-08-21T15:44:25.093Z",
+        "durationDays": 30
+      },
+      "totalRunsAnalyzed": 57,
+      "workflowsWithCacheOps": 9
+    }
+  },
+  "summary": {
+    "overall": {
+      "totalCacheOperations": 71,
+      "cacheHits": 71,
+      "cacheMisses": 0,
+      "partialHits": 0,
+      "hitRate": 100,
+      "partialHitRate": 0,
+      "effectiveHitRate": 100,
+      "missRate": 0
+    },
+    "performance": {
+      "highPerformers": 9,
+      "mediumPerformers": 0,
+      "lowPerformers": 0,
+      "averageHitRate": 100
+    },
+    "cacheEfficiency": {
+      "totalTimeSaved": 2,
+      "averageCacheSize": 154035814,
+      "workflowsWithTimingData": 1,
+      "workflowsWithSizeData": 1
+    }
+  },
+  "workflows": [
+    {
+      "name": "(Compiler) Playground",
+      "statistics": {
+        "totalCacheOperations": 8,
+        "cacheHits": 8,
+        "cacheMisses": 0,
+        "partialHits": 0,
+        "hitRate": 100,
+        "partialHitRate": 0,
+        "effectiveHitRate": 100,
+        "missRate": 0
+      },
+      "performance": {
+        "averageCacheSize": null,
+        "timeSaved": null,
+        "rating": "excellent",
+        "recommendations": [
+          "Cache performance looks good for this workflow"
+        ]
+      },
+      "recentOperations": [
+        {
+          "runId": 17131183275,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "cacheKey": "node-cache-Linux-x64-yarn-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183275"
+        },
+        {
+          "runId": 17131183275,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: playwright-browsers-v6-X64-Linux-1.51.1",
+          "cacheKey": "playwright-browsers-v6-X64-Linux-1.51.1",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183275"
+        },
+        {
+          "runId": 17131183275,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Run actions/upload-artifact@v4",
+          "stepName": "Cache saved with key: compiler-and-playground-node_modules-v6-X64-Linux-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "cacheKey": "compiler-and-playground-node_modules-v6-X64-Linux-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183275"
+        },
+        {
+          "runId": 17131183275,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "cacheKey": "node-cache-Linux-x64-yarn-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183275"
+        },
+        {
+          "runId": 17131183275,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: playwright-browsers-v6-X64-Linux-1.51.1",
+          "cacheKey": "playwright-browsers-v6-X64-Linux-1.51.1",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183275"
+        },
+        {
+          "runId": 17131183275,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Test playground/24_Post Restore cached node_modules.txt",
+          "stepName": "Cache saved with key: compiler-and-playground-node_modules-v6-X64-Linux-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "cacheKey": "compiler-and-playground-node_modules-v6-X64-Linux-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183275"
+        },
+        {
+          "runId": 17115292325,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "cacheKey": "node-cache-Linux-x64-yarn-678c2ffa1f914a9b2e4d80c785ee0b1447f16c06be62e362765dfc6685fc4b4a",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292325"
+        },
+        {
+          "runId": 17115292325,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: playwright-browsers-v6-X64-Linux-1.51.1",
+          "cacheKey": "playwright-browsers-v6-X64-Linux-1.51.1",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292325"
+        }
+      ]
+    },
+    {
+      "name": "(Shared) Lint",
+      "statistics": {
+        "totalCacheOperations": 4,
+        "cacheHits": 4,
+        "cacheMisses": 0,
+        "partialHits": 0,
+        "hitRate": 100,
+        "partialHitRate": 0,
+        "effectiveHitRate": 100,
+        "missRate": 0
+      },
+      "performance": {
+        "averageCacheSize": null,
+        "timeSaved": null,
+        "rating": "excellent",
+        "recommendations": [
+          "Cache performance looks good for this workflow"
+        ]
+      },
+      "recentOperations": [
+        {
+          "runId": 17131504855,
+          "runDate": "2025-08-21T15:27:52.000Z",
+          "jobName": "Run ./scripts/ci/check_license.sh",
+          "stepName": "Cache saved with key: shared-lint-node_modules-v6-X64-Linux-87669d799a76256d38b8b80e91e491c0227708d4a81aaa6c5da2e4dd284cf11f",
+          "cacheKey": "shared-lint-node_modules-v6-X64-Linux-87669d799a76256d38b8b80e91e491c0227708d4a81aaa6c5da2e4dd284cf11f",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131504855"
+        },
+        {
+          "runId": 17131504855,
+          "runDate": "2025-08-21T15:27:52.000Z",
+          "jobName": "Check license/12_Post Restore cached node_modules.txt",
+          "stepName": "Cache saved with key: shared-lint-node_modules-v6-X64-Linux-87669d799a76256d38b8b80e91e491c0227708d4a81aaa6c5da2e4dd284cf11f",
+          "cacheKey": "shared-lint-node_modules-v6-X64-Linux-87669d799a76256d38b8b80e91e491c0227708d4a81aaa6c5da2e4dd284cf11f",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131504855"
+        },
+        {
+          "runId": 17131183290,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Run ./scripts/ci/check_license.sh",
+          "stepName": "Cache saved with key: shared-lint-node_modules-v6-X64-Linux-fad51ef24760d374095405df7f26ce2819113929f11297f512e64099d0f23c7f",
+          "cacheKey": "shared-lint-node_modules-v6-X64-Linux-fad51ef24760d374095405df7f26ce2819113929f11297f512e64099d0f23c7f",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183290"
+        },
+        {
+          "runId": 17131183290,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Check license/12_Post Restore cached node_modules.txt",
+          "stepName": "Cache saved with key: shared-lint-node_modules-v6-X64-Linux-fad51ef24760d374095405df7f26ce2819113929f11297f512e64099d0f23c7f",
+          "cacheKey": "shared-lint-node_modules-v6-X64-Linux-fad51ef24760d374095405df7f26ce2819113929f11297f512e64099d0f23c7f",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183290"
+        }
+      ]
+    },
+    {
+      "name": "(Runtime) Commit Artifacts for Meta WWW and fbsource V2",
+      "statistics": {
+        "totalCacheOperations": 3,
+        "cacheHits": 3,
+        "cacheMisses": 0,
+        "partialHits": 0,
+        "hitRate": 100,
+        "partialHitRate": 0,
+        "effectiveHitRate": 100,
+        "missRate": 0
+      },
+      "performance": {
+        "averageCacheSize": null,
+        "timeSaved": null,
+        "rating": "excellent",
+        "recommendations": [
+          "Cache performance looks good for this workflow"
+        ]
+      },
+      "recentOperations": [
+        {
+          "runId": 17131412079,
+          "runDate": "2025-08-21T15:24:21.000Z",
+          "jobName": "Run actions/upload-artifact@v4",
+          "stepName": "Cache saved with key: runtime-release-node_modules-v6-X64-Linux-a9983ba01167866cf6547a38eab8ca64af89c9d8fa10c471597faecea0114d82",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-a9983ba01167866cf6547a38eab8ca64af89c9d8fa10c471597faecea0114d82",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131412079"
+        },
+        {
+          "runId": 17131412079,
+          "runDate": "2025-08-21T15:24:21.000Z",
+          "jobName": "download_artifacts/17_Post Restore cached node_modules.txt",
+          "stepName": "Cache saved with key: runtime-release-node_modules-v6-X64-Linux-a9983ba01167866cf6547a38eab8ca64af89c9d8fa10c471597faecea0114d82",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-a9983ba01167866cf6547a38eab8ca64af89c9d8fa10c471597faecea0114d82",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131412079"
+        },
+        {
+          "runId": 17116372166,
+          "runDate": "2025-08-21T03:36:04.000Z",
+          "jobName": "Run actions/upload-artifact@v4",
+          "stepName": "Cache saved with key: runtime-release-node_modules-v6-X64-Linux-fcfb71f1e4068d50b9950b7da4828e7c719c2c6b08ea17ccbb61e74df4881a29",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-fcfb71f1e4068d50b9950b7da4828e7c719c2c6b08ea17ccbb61e74df4881a29",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17116372166"
+        }
+      ]
+    },
+    {
+      "name": "(Runtime) Fuzz tests",
+      "statistics": {
+        "totalCacheOperations": 2,
+        "cacheHits": 2,
+        "cacheMisses": 0,
+        "partialHits": 0,
+        "hitRate": 100,
+        "partialHitRate": 0,
+        "effectiveHitRate": 100,
+        "missRate": 0
+      },
+      "performance": {
+        "averageCacheSize": null,
+        "timeSaved": null,
+        "rating": "excellent",
+        "recommendations": [
+          "Cache performance looks good for this workflow"
+        ]
+      },
+      "recentOperations": [
+        {
+          "runId": 17130956871,
+          "runDate": "2025-08-21T15:07:05.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-e51196608285c1605edacee86e6831dedc7654b022c069de003c207bc4aa88df",
+          "cacheKey": "node-cache-Linux-x64-yarn-e51196608285c1605edacee86e6831dedc7654b022c069de003c207bc4aa88df",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17130956871"
+        },
+        {
+          "runId": 17130956871,
+          "runDate": "2025-08-21T15:07:05.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-e51196608285c1605edacee86e6831dedc7654b022c069de003c207bc4aa88df",
+          "cacheKey": "node-cache-Linux-x64-yarn-e51196608285c1605edacee86e6831dedc7654b022c069de003c207bc4aa88df",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17130956871"
+        }
+      ]
+    },
+    {
+      "name": "(Compiler) TypeScript",
+      "statistics": {
+        "totalCacheOperations": 22,
+        "cacheHits": 22,
+        "cacheMisses": 0,
+        "partialHits": 0,
+        "hitRate": 100,
+        "partialHitRate": 0,
+        "effectiveHitRate": 100,
+        "missRate": 0
+      },
+      "performance": {
+        "averageCacheSize": 154035814.4,
+        "timeSaved": null,
+        "rating": "excellent",
+        "recommendations": [
+          "Cache performance looks good for this workflow"
+        ]
+      },
+      "recentOperations": [
+        {
+          "runId": 17131183288,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Run yarn workspace babel-plugin-react-compiler lint",
+          "stepName": "Cache saved with key: compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": 154035814.4,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183288"
+        },
+        {
+          "runId": 17131183288,
+          "runDate": "2025-08-21T15:15:37.000Z",
+          "jobName": "Lint babel-plugin-react-compiler/10_Post Restore cached node_modules.txt",
+          "stepName": "Cache saved with key: compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131183288"
+        },
+        {
+          "runId": 17115292319,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292319"
+        },
+        {
+          "runId": 17115292319,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292319"
+        },
+        {
+          "runId": 17115292319,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292319"
+        },
+        {
+          "runId": 17115292319,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292319"
+        },
+        {
+          "runId": 17115292319,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292319"
+        },
+        {
+          "runId": 17115292319,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292319"
+        },
+        {
+          "runId": 17115292319,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292319"
+        },
+        {
+          "runId": 17115292319,
+          "runDate": "2025-08-21T02:20:00.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17115292319"
+        }
+      ]
+    },
+    {
+      "name": "(Runtime) Publish Prereleases Manual",
+      "statistics": {
+        "totalCacheOperations": 8,
+        "cacheHits": 8,
+        "cacheMisses": 0,
+        "partialHits": 0,
+        "hitRate": 100,
+        "partialHitRate": 0,
+        "effectiveHitRate": 100,
+        "missRate": 0
+      },
+      "performance": {
+        "averageCacheSize": null,
+        "timeSaved": null,
+        "rating": "excellent",
+        "recommendations": [
+          "Cache performance looks good for this workflow"
+        ]
+      },
+      "recentOperations": [
+        {
+          "runId": 16961715898,
+          "runDate": "2025-08-14T09:45:55.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "cacheKey": "node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/16961715898"
+        },
+        {
+          "runId": 16961715898,
+          "runDate": "2025-08-14T09:45:55.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/16961715898"
+        },
+        {
+          "runId": 16961715898,
+          "runDate": "2025-08-14T09:45:55.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "cacheKey": "node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/16961715898"
+        },
+        {
+          "runId": 16961715898,
+          "runDate": "2025-08-14T09:45:55.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/16961715898"
+        },
+        {
+          "runId": 16926036439,
+          "runDate": "2025-08-13T02:40:14.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "cacheKey": "node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/16926036439"
+        },
+        {
+          "runId": 16926036439,
+          "runDate": "2025-08-13T02:40:14.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/16926036439"
+        },
+        {
+          "runId": 16926036439,
+          "runDate": "2025-08-13T02:40:14.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "cacheKey": "node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/16926036439"
+        },
+        {
+          "runId": 16926036439,
+          "runDate": "2025-08-13T02:40:14.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/16926036439"
+        }
+      ]
+    },
+    {
+      "name": "(Runtime) Publish Prereleases Nightly",
+      "statistics": {
+        "totalCacheOperations": 8,
+        "cacheHits": 8,
+        "cacheMisses": 0,
+        "partialHits": 0,
+        "hitRate": 100,
+        "partialHitRate": 0,
+        "effectiveHitRate": 100,
+        "missRate": 0
+      },
+      "performance": {
+        "averageCacheSize": null,
+        "timeSaved": null,
+        "rating": "excellent",
+        "recommendations": [
+          "Cache performance looks good for this workflow"
+        ]
+      },
+      "recentOperations": [
+        {
+          "runId": 17104171432,
+          "runDate": "2025-08-20T16:17:41.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "cacheKey": "node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17104171432"
+        },
+        {
+          "runId": 17104171432,
+          "runDate": "2025-08-20T16:17:41.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17104171432"
+        },
+        {
+          "runId": 17104171432,
+          "runDate": "2025-08-20T16:17:41.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "cacheKey": "node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17104171432"
+        },
+        {
+          "runId": 17104171432,
+          "runDate": "2025-08-20T16:17:41.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17104171432"
+        },
+        {
+          "runId": 17075538201,
+          "runDate": "2025-08-19T16:17:51.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "cacheKey": "node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17075538201"
+        },
+        {
+          "runId": 17075538201,
+          "runDate": "2025-08-19T16:17:51.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17075538201"
+        },
+        {
+          "runId": 17075538201,
+          "runDate": "2025-08-19T16:17:51.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "cacheKey": "node-cache-Linux-x64-yarn-3af36f9173334668946ec3839a98703ee4cfc2c0f1f514c46e1c20a79cfc3b20",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17075538201"
+        },
+        {
+          "runId": 17075538201,
+          "runDate": "2025-08-19T16:17:51.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "cacheKey": "runtime-release-node_modules-v6-X64-Linux-b0e0a9fafa7fdff16f665922bef6954e753e5ae62ff06b6c95348da0f7d3e040",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17075538201"
+        }
+      ]
+    },
+    {
+      "name": "(Compiler) Publish Prereleases Nightly",
+      "statistics": {
+        "totalCacheOperations": 4,
+        "cacheHits": 4,
+        "cacheMisses": 0,
+        "partialHits": 0,
+        "hitRate": 100,
+        "partialHitRate": 0,
+        "effectiveHitRate": 100,
+        "missRate": 0
+      },
+      "performance": {
+        "averageCacheSize": null,
+        "timeSaved": 2,
+        "rating": "excellent",
+        "recommendations": [
+          "Cache performance looks good for this workflow"
+        ]
+      },
+      "recentOperations": [
+        {
+          "runId": 17104155751,
+          "runDate": "2025-08-20T16:16:57.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17104155751"
+        },
+        {
+          "runId": 17104155751,
+          "runDate": "2025-08-20T16:16:57.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": 1
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17104155751"
+        },
+        {
+          "runId": 17075516530,
+          "runDate": "2025-08-19T16:16:55.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "node-cache-Linux-x64-yarn-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17075516530"
+        },
+        {
+          "runId": 17075516530,
+          "runDate": "2025-08-19T16:16:55.000Z",
+          "jobName": "Run actions/cache@v4",
+          "stepName": "Cache restored from key: compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "cacheKey": "compiler-node_modules-v6-X64-Linux-2c5836203caf2a4df1bdd499a2ab177ef3ddbef1c1fa40cd49bdf96981e6f4de",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": 1
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17075516530"
+        }
+      ]
+    },
+    {
+      "name": "(Runtime) ESLint Plugin E2E",
+      "statistics": {
+        "totalCacheOperations": 12,
+        "cacheHits": 12,
+        "cacheMisses": 0,
+        "partialHits": 0,
+        "hitRate": 100,
+        "partialHitRate": 0,
+        "effectiveHitRate": 100,
+        "missRate": 0
+      },
+      "performance": {
+        "averageCacheSize": null,
+        "timeSaved": null,
+        "rating": "excellent",
+        "recommendations": [
+          "Cache performance looks good for this workflow"
+        ]
+      },
+      "recentOperations": [
+        {
+          "runId": 17131504881,
+          "runDate": "2025-08-21T15:27:52.000Z",
+          "jobName": "Run yarn lint",
+          "stepName": "Cache saved with key: runtime-and-compiler-eslint_e2e-node_modules-v6-X64-Linux-2f880c0665529ef481aabc1346c6f90c2d733ab74d4bffcf5ad78cbcfb8156c8",
+          "cacheKey": "runtime-and-compiler-eslint_e2e-node_modules-v6-X64-Linux-2f880c0665529ef481aabc1346c6f90c2d733ab74d4bffcf5ad78cbcfb8156c8",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131504881"
+        },
+        {
+          "runId": 17131504881,
+          "runDate": "2025-08-21T15:27:52.000Z",
+          "jobName": "ESLint v7/18_Post Restore cached node_modules.txt",
+          "stepName": "Cache saved with key: runtime-and-compiler-eslint_e2e-node_modules-v6-X64-Linux-2f880c0665529ef481aabc1346c6f90c2d733ab74d4bffcf5ad78cbcfb8156c8",
+          "cacheKey": "runtime-and-compiler-eslint_e2e-node_modules-v6-X64-Linux-2f880c0665529ef481aabc1346c6f90c2d733ab74d4bffcf5ad78cbcfb8156c8",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131504881"
+        },
+        {
+          "runId": 17131434790,
+          "runDate": "2025-08-21T15:25:14.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "cacheKey": "node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131434790"
+        },
+        {
+          "runId": 17131434790,
+          "runDate": "2025-08-21T15:25:14.000Z",
+          "jobName": "Run yarn lint",
+          "stepName": "Cache saved with key: runtime-and-compiler-eslint_e2e-node_modules-v6-X64-Linux-15666084ae20a1f6f2f1fae762bc497efe905154c59135ee4d286caa9550e178",
+          "cacheKey": "runtime-and-compiler-eslint_e2e-node_modules-v6-X64-Linux-15666084ae20a1f6f2f1fae762bc497efe905154c59135ee4d286caa9550e178",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131434790"
+        },
+        {
+          "runId": 17131434790,
+          "runDate": "2025-08-21T15:25:14.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "cacheKey": "node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131434790"
+        },
+        {
+          "runId": 17131434790,
+          "runDate": "2025-08-21T15:25:14.000Z",
+          "jobName": "ESLint v7/18_Post Restore cached node_modules.txt",
+          "stepName": "Cache saved with key: runtime-and-compiler-eslint_e2e-node_modules-v6-X64-Linux-15666084ae20a1f6f2f1fae762bc497efe905154c59135ee4d286caa9550e178",
+          "cacheKey": "runtime-and-compiler-eslint_e2e-node_modules-v6-X64-Linux-15666084ae20a1f6f2f1fae762bc497efe905154c59135ee4d286caa9550e178",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131434790"
+        },
+        {
+          "runId": 17131434790,
+          "runDate": "2025-08-21T15:25:14.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "cacheKey": "node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131434790"
+        },
+        {
+          "runId": 17131434790,
+          "runDate": "2025-08-21T15:25:14.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "cacheKey": "node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131434790"
+        },
+        {
+          "runId": 17131434790,
+          "runDate": "2025-08-21T15:25:14.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "cacheKey": "node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131434790"
+        },
+        {
+          "runId": 17131434790,
+          "runDate": "2025-08-21T15:25:14.000Z",
+          "jobName": "Environment details",
+          "stepName": "Cache restored from key: node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "cacheKey": "node-cache-Linux-x64-yarn-b7a97df78db3c745b9804c53537be0397a4f939ad65a7610b76450594dc9a7f0",
+          "result": {
+            "type": "hit",
+            "isHit": true,
+            "sizeBytes": null,
+            "timeMs": null
+          },
+          "runUrl": "https://github.com/facebook/react/actions/runs/17131434790"
+        }
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "low",
+      "category": "maintenance",
+      "message": "Excellent cache performance! Monitor regularly to maintain this level.",
+      "actionable": false
+    }
+  ],
+  "insights": [
+    {
+      "category": "performance-distribution",
+      "insight": "Workflow performance varies: 9 excellent, 0 good, 0 fair, 0 poor",
+      "data": {
+        "excellent": 9,
+        "good": 0,
+        "fair": 0,
+        "poor": 0
+      }
+    },
+    {
+      "category": "cache-volume",
+      "insight": "Analyzed 71 cache operations across 9 workflows",
+      "data": {
+        "totalOperations": 71,
+        "averageOpsPerWorkflow": 8,
+        "mostActiveWorkflow": "(Compiler) TypeScript"
+      }
+    },
+    {
+      "category": "time-savings",
+      "insight": "Cache hits saved approximately 0 seconds of build time",
+      "data": {
+        "totalTimeSavedMs": 2,
+        "totalTimeSavedSeconds": 0,
+        "totalTimeSavedMinutes": 0
+      }
+    }
+  ]
+}

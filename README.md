@@ -1,114 +1,101 @@
-# GitHub CLI Extension: gha-cache-hit-rate
+# gh actions-cache-hit-rate
 
-A GitHub CLI extension that analyzes cache hit rates across GitHub Actions workflows to help repository owners make informed decisions about caching strategies vs. custom Docker images.
+[![GitHub](https://img.shields.io/github/license/austenstone/gh-actions-cache-hit-rate)](https://github.com/austenstone/gh-actions-cache-hit-rate/blob/main/LICENSE)
+[![npm](https://img.shields.io/npm/v/gh-actions-cache-hit-rate)](https://www.npmjs.com/package/gh-actions-cache-hit-rate)
 
-[![npm version](https://badge.fury.io/js/gha-cache-hit-rate.svg)](https://badge.fury.io/js/gha-cache-hit-rate)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+> **GitHub CLI extension to analyze cache hit rates across GitHub Actions workflows** 🚀
+
+Get detailed insights into your GitHub Actions cache performance with beautiful reports showing hit rates, cache sizes, time saved, and optimization recommendations.
 
 ## 🎯 Features
 
-- **Comprehensive Analysis**: Analyzes cache hit rates across all workflows in a repository
-- **Multiple Output Formats**: Table, CSV, and JSON outputs for different use cases
-- **Advanced Filtering**: Filter by date range, workflow runs, and cache operation thresholds
-- **Performance Insights**: Detailed statistics with actionable recommendations
-- **Concurrent Processing**: Configurable concurrency for efficient API usage
-- **Progress Tracking**: Real-time progress indicators for long-running analyses
-- **Error Handling**: Robust error handling with graceful degradation
+- **📊 Comprehensive Analytics**: Overall cache hit rates, miss rates, and partial hits
+- **🔧 Workflow-level Breakdown**: Detailed analysis per workflow
+- **📈 Time Series Data**: Cache performance over time
+- **💾 Cache Size Tracking**: Monitor cache storage usage
+- **⏱️ Performance Metrics**: Time saved through caching
+- **📋 Multiple Output Formats**: Table, CSV, and JSON with insights
+- **🎨 Beautiful CLI Interface**: Colorized output with progress indicators
+- **🔍 Smart Repository Detection**: Auto-detects current repository context
 
-## 📊 What It Analyzes
+## 📦 Installation
 
-- **Cache Hit Rates**: Percentage of successful cache retrievals
-- **Partial Hits**: Cache restored from fallback restore-keys
-- **Cache Misses**: Operations where no cache was found
-- **Performance Metrics**: Cache sizes, time saved, and efficiency trends
-- **Workflow Comparison**: Side-by-side analysis of different workflows
-
-## 🚀 Installation
-
-### Prerequisites
-
-- [GitHub CLI](https://cli.github.com/) installed and authenticated
-- Node.js 16+ 
-- npm or yarn
-
-### Install as GitHub CLI Extension
+### As a GitHub CLI Extension (Recommended)
 
 ```bash
-# Install from npm
-npm install -g gha-cache-hit-rate
-
-# Or install locally for development
-git clone https://github.com/austenstone/gha-cache-hit-rate.git
-cd gha-cache-hit-rate
-npm install
-npm run build
-npm link
+gh extension install austenstone/gh-actions-cache-hit-rate
 ```
 
-### GitHub CLI Integration
+### Via npm
 
-Once installed, the extension is available as a GitHub CLI command:
+```bash
+npm install -g gh-actions-cache-hit-rate
+```
 
 ```bash
 gh cache-hit-rate --help
 ```
 
-## 📚 Usage
+## � Usage
 
 ### Basic Usage
 
 ```bash
 # Analyze current repository
-gh cache-hit-rate
+gh actions-cache-hit-rate
 
 # Analyze specific repository
-gh cache-hit-rate --owner octocat --repo Hello-World
+gh actions-cache-hit-rate --owner facebook --repo react
 
-# Analyze with date range
-gh cache-hit-rate --since 2023-01-01 --until 2023-12-31
+# With custom date range
+gh actions-cache-hit-rate --since 2024-01-01 --until 2024-01-31
 ```
 
-### Advanced Usage
+### Advanced Options
 
 ```bash
-# Export to CSV
-gh cache-hit-rate --format csv --output cache-report.csv
-
-# Export to JSON for further processing
-gh cache-hit-rate --format json --output cache-data.json
-
 # Limit analysis scope
-gh cache-hit-rate --max-runs-per-workflow 50 --min-cache-ops 5
+gh actions-cache-hit-rate --max-runs-per-workflow 10 --max-age-days 30
 
-# Increase concurrency for large repos
-gh cache-hit-rate --concurrency 5 --verbose
+# Different output formats
+gh actions-cache-hit-rate --format csv --output cache-report.csv
+gh actions-cache-hit-rate --format json --output cache-data.json
+
+# Verbose output with progress
+gh actions-cache-hit-rate --verbose
+
+# Higher concurrency for faster analysis
+gh actions-cache-hit-rate --concurrency 5
 ```
 
-### Command Options
+## 📋 Command Reference
 
-| Option | Short | Description | Default |
-|--------|-------|-------------|---------|
-| `--owner` | `-o` | Repository owner | Current repo |
-| `--repo` | `-r` | Repository name | Current repo |
-| `--since` | `-s` | Start date (YYYY-MM-DD) | 30 days ago |
-| `--until` | `-u` | End date (YYYY-MM-DD) | Today |
-| `--max-runs-per-workflow` | `-m` | Max runs to analyze per workflow | 100 |
-| `--format` | `-f` | Output format (table/csv/json) | table |
-| `--concurrency` | `-c` | Concurrent API requests | 3 |
-| `--successful-only` | | Include only successful runs | true |
-| `--min-cache-ops` | | Min cache operations to include workflow | 1 |
-| `--output` | | Output file path (for CSV/JSON) | - |
-| `--verbose` | `-v` | Enable verbose logging | false |
+```bash
+gh actions-cache-hit-rate [options]
 
-## 📈 Output Examples
+Options:
+  -o, --owner <owner>                 Repository owner (auto-detected)
+  -r, --repo <repo>                   Repository name (auto-detected)  
+  -s, --since <date>                  Start date (YYYY-MM-DD)
+  -u, --until <date>                  End date (YYYY-MM-DD)
+      --max-runs-per-workflow <num>   Limit runs per workflow (default: 50)
+      --max-age-days <days>           Only analyze runs from last N days
+      --format <type>                 Output format: table|csv|json (default: table)
+      --output <file>                 Output file path
+      --concurrency <num>             Concurrent requests (default: 3)
+  -v, --verbose                       Detailed progress output
+      --version                       Show version
+  -h, --help                          Show help
+```
 
-### Table Output
+## 📊 Sample Output
 
+### Table Format
 ```
 🔍 GitHub Actions Cache Hit Rate Analysis
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📁 Repository: octocat/Hello-World
-📅 Analysis Period: 2023-01-01 → 2023-12-31
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 Repository: facebook/react
+📅 Analysis Period: 2024-01-01 → 2024-01-31  
 🏃 Total Runs Analyzed: 245
 
 📊 Overall Statistics
@@ -116,55 +103,130 @@ gh cache-hit-rate --concurrency 5 --verbose
 ┌─────────────────────────┬───────────────┐
 │ Metric                  │ Value         │
 ├─────────────────────────┼───────────────┤
-│ Total Cache Operations  │ 1,247         │
-│ Cache Hits              │ 891 (71.4%)   │
-│ Cache Misses            │ 289 (23.2%)   │
-│ Partial Hits            │ 67 (5.4%)     │
-│ Hit Rate                │ 71.4%         │
-│ Effective Hit Rate      │ 76.8%         │
+│ Total Cache Operations  │ 2,847         │
+├─────────────────────────┼───────────────┤
+│ Cache Hits              │ 2,456 (86.3%) │
+├─────────────────────────┼───────────────┤
+│ Cache Misses            │ 321 (11.3%)   │
+├─────────────────────────┼───────────────┤
+│ Partial Hits            │ 70 (2.5%)     │
+├─────────────────────────┼───────────────┤
+│ Hit Rate                │ 86.3%         │
+├─────────────────────────┼───────────────┤
+│ Effective Hit Rate      │ 88.8%         │
 └─────────────────────────┴───────────────┘
 
 🔧 Workflow Breakdown
 ──────────────────────────────────────────────────
-┌─────────────────────────┬────────────┬────────────┬─────────────┬────────────┬────────────┐
-│ Workflow                │ Operations │ Hit Rate   │ Partial Rate│ Avg Size   │ Time Saved │
-├─────────────────────────┼────────────┼────────────┼─────────────┼────────────┼────────────┤
-│ CI                      │ 456        │ 78.5%      │ 12.3%       │ 125.3MB    │ 2.4m       │
-│ Build                   │ 234        │ 65.2%      │ 8.1%        │ 89.7MB     │ 1.8m       │
-│ Test                    │ 345        │ 82.1%      │ 6.7%        │ 45.2MB     │ 1.2m       │
-│ Deploy                  │ 212        │ 70.8%      │ 15.6%       │ 78.4MB     │ 1.1m       │
-└─────────────────────────┴────────────┴────────────┴─────────────┴────────────┴────────────┘
-
-💡 Recommendations
-──────────────────────────────
-✅ Good overall hit rate! Your caching strategy is working well.
-🎯 2 workflow(s) have room for improvement (<70% hit rate).
-   • Review cache key generation logic
-   • Consider using more stable cache keys
-🔄 Moderate partial hit rate suggests some cache key instability.
-   • Consider using more stable primary keys
+┌─────────────────────────┬────────────┬────────────┬────────────┬────────────┐
+│ Workflow                │ Operations │ Hit Rate   │ Avg Size   │ Time Saved │
+├─────────────────────────┼────────────┼────────────┼────────────┼────────────┤
+│ CI                      │ 1,245      │ 89.2%      │ 156.3MB    │ 2.1h       │
+├─────────────────────────┼────────────┼────────────┼────────────┼────────────┤
+│ Build and Test          │ 856        │ 84.1%      │ 203.7MB    │ 1.8h       │
+├─────────────────────────┼────────────┼────────────┼────────────┼────────────┤
+│ Lint                    │ 425        │ 91.8%      │ 89.2MB     │ 45m        │
+├─────────────────────────┼────────────┼────────────┼────────────┼────────────┤
+│ Release                 │ 321        │ 79.4%      │ 124.5MB    │ 23m        │
+└─────────────────────────┴────────────┴────────────┴────────────┴────────────┘
 ```
 
-### CSV Output
-
-The CSV output includes detailed per-workflow statistics:
-
-```csv
-Repository,Workflow Name,Total Cache Operations,Cache Hits,Cache Misses,Partial Hits,Hit Rate (%),Partial Hit Rate (%),Effective Hit Rate (%)
-octocat/Hello-World,OVERALL SUMMARY,1247,891,289,67,71.4,5.4,76.8
-octocat/Hello-World,CI,456,358,76,22,78.5,4.8,83.3
-octocat/Hello-World,Build,234,153,65,16,65.4,6.8,72.2
-```
-
-### JSON Output
-
-The JSON output provides comprehensive data including insights and recommendations:
-
+### JSON Format with Insights
 ```json
 {
-  "metadata": {
-    "generatedAt": "2023-12-01T10:30:00.000Z",
-    "tool": "gha-cache-hit-rate",
+  "repository": "facebook/react",
+  "analyzedPeriod": {
+    "start": "2024-01-01",
+    "end": "2024-01-31"
+  },
+  "summary": {
+    "totalOperations": 2847,
+    "hitRate": 86.3,
+    "effectiveHitRate": 88.8,
+    "totalTimeSaved": "4.9h"
+  },
+  "insights": [
+    "🎯 Overall hit rate of 86.3% is above the recommended 80% threshold",
+    "⚡ CI workflow shows excellent 89.2% hit rate - keep it up!",
+    "🔧 Release workflow at 79.4% could benefit from optimization",
+    "💡 Consider reviewing cache keys for Build and Test workflow"
+  ],
+  "recommendations": [
+    "📈 Focus on optimizing Release workflow cache strategy",
+    "🗂️ Review cache key patterns for better hit rates",
+    "📊 Monitor cache size growth in CI workflow (156.3MB avg)"
+  ]
+}
+```
+
+## 🔧 Development
+
+### Prerequisites
+- Node.js 18+
+- GitHub CLI (`gh`)
+- GitHub personal access token with appropriate permissions
+
+### Setup
+```bash
+git clone https://github.com/austenstone/gh-actions-cache-hit-rate
+cd gh-actions-cache-hit-rate
+npm install
+npm run build
+```
+
+### Testing
+```bash
+npm test
+npm run test:watch
+```
+
+### Local Development
+```bash
+# Install locally as extension
+gh extension install .
+
+# Test with your repository  
+gh actions-cache-hit-rate --verbose
+```
+
+## 📚 How It Works
+
+1. **🔍 Discovery**: Fetches all workflows and recent runs from GitHub API
+2. **📥 Log Analysis**: Downloads workflow run logs and extracts cache operations  
+3. **🧮 Processing**: Parses cache hits, misses, and metadata using regex patterns
+4. **📊 Aggregation**: Calculates statistics, hit rates, and performance metrics
+5. **🎨 Presentation**: Formats results in beautiful, actionable reports
+
+The tool supports multiple cache action versions and patterns:
+- `actions/cache@v3` and `v4`
+- Custom cache implementations
+- Node.js/npm/yarn dependency caching
+- Docker layer caching
+- And more!
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [GitHub CLI](https://cli.github.com/) for the excellent extension framework
+- [Octokit](https://github.com/octokit/octokit.js) for GitHub API integration  
+- The GitHub Actions team for building an amazing platform
+
+---
+
+**⭐ If this tool helps optimize your workflows, please consider giving it a star!**
     "version": "0.1.0",
     "repository": {
       "owner": "octocat",
