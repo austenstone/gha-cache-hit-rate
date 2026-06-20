@@ -45,10 +45,10 @@
     "@types/yargs": "^17.0.0",
     "eslint": "^9.30.1",
     "globals": "^16.3.0",
-    "tsx": "^4.20.3",
+    "tsx": "^4.22.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.1",
-    "vitest": "^3.2.6"
+    "vitest": "^4.1.9"
   },
   "dependencies": {
     "@octokit/plugin-throttling": "^11.0.1",
